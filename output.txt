@@ -1,0 +1,134 @@
+Script started on 2026-04-27 12:50:38-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+[?2004h]0;mina@HP: ~/project2[01;32mmina@HP[00m:[01;34m~/project2[00m$ nano main.cpp
+[?2004l[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;52H(B[0;7m[ Read 114 lines ](B[m[H(B[0;7m  GNU nano 7.2                                            main.cpp                                                      [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2d(B[0;1m[36m#include[33m <iostream>[3d[36m#include[33m <fstream>[4d[36m#include[33m <vector>[5d[36m#include[33m <thread>[6d[36m#include[33m <mutex>[7d[36m#include[33m <chrono>[8d[36m#include[33m <cstdlib>[9d[36m#include[33m <ctime>[11d(B[0m[32musing[39m(B[m [32mnamespace[39m(B[m std;[13d(B[0;1m[34m// This function simulates one process.[14d// Each process runs as its own thread.[15d(B[0m[32mvoid[39m(B[m processThread([32mint[39m(B[m pid, [32mint[39m(B[m burstTime) {[16;5Hcout << (B[0;1m[33m"[Process "[39m(B[m << pid << (B[0;1m[33m"] Started. Burst time = "[17;10H[39m(B[m<< burstTime << (B[0;1m[33m" seconds."[39m(B[m << endl;[19;5H(B[0;1m[34m// Simulates CPU burst time[20;5H[39m(B[mthis_thread::sleep_for(chrono::seconds(burstTime));[22;5Hcout << (B[0;1m[33m"[Process "[39m(B[m << pid << (B[0;1m[33m"] Finished."[39m(B[m << endl;[23d}[25d(B[0;1m[34m// This function simulates one philosopher.[26d// Each philosopher is a thread.[27d(B[0m[32mvoid[39m(B[m philosopher([32mint[39m(B[m id, vector<mutex>& forks) {[2d[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;mina@HP: ~/project2[01;32mmina@HP[00m:[01;34m~/project2[00m$ nano processes.txt
+[?2004l[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 5 lines ](B[m[H(B[0;7m  GNU nano 7.2                                          processes.txt                                                   [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2d1 3[3d2 2[4d3 4[5d4 1[6d5 2[2d[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;mina@HP: ~/project2[01;32mmina@HP[00m:[01;34m~/project2[00m$ [7mg++ main.cpp -o project2 -pthread[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cg++ main.cpp -o project2 -pthread
+[?2004l[?2004h]0;mina@HP: ~/project2[01;32mmina@HP[00m:[01;34m~/project2[00m$ [7m./project2[27m./project2
+[?2004l===== PART 1: PROCESS SIMULATION =====
+[Process 1] Started. Burst time = 3 seconds.
+[Process 2] Started. Burst time = 2 seconds.
+[Process 3] Started. Burst time = 4 seconds.
+[Process 4] Started. Burst time = 1 seconds.
+[Process 5] Started. Burst time = 2 seconds.
+[Process 4] Finished.
+[Process 2] Finished.
+[Process 5] Finished.
+[Process 1] Finished.
+[Process 3] Finished.
+All process threads completed.
+
+===== PART 2: DINING PHILOSOPHERS =====
+[Philosopher 0] Thinking... Cycle 1
+[Philosopher 1] Thinking... Cycle 1
+[Philosopher 2] Thinking... Cycle 1
+[Philosopher 3] Thinking... Cycle 1
+[Philosopher 4] Thinking... Cycle 1
+[Philosopher 1] Waiting for forks...
+[Philosopher 1] Picked up fork 1
+[Philosopher 1] Picked up fork 2
+[Philosopher 1] Eating...
+[Philosopher 3] Waiting for forks...
+[Philosopher 3] Picked up fork 3
+[Philosopher 3] Picked up fork 4
+[Philosopher 3] Eating...
+[Philosopher 2] Waiting for forks...
+[Philosopher 1] Released fork 2
+[Philosopher 1] Released fork 1
+[Philosopher 1] Thinking... Cycle 2
+[Philosopher 2] Picked up fork 2
+[Philosopher 0] Waiting for forks...
+[Philosopher 0] Picked up fork 0
+[Philosopher 0] Picked up fork 1
+[Philosopher 0] Eating...
+[Philosopher 4] Waiting for forks...
+[Philosopher 3] Released fork 4
+[Philosopher 3] Released fork 3
+[Philosopher 3] Thinking... Cycle 2
+[Philosopher 2] Picked up fork 3
+[Philosopher 2] Eating...
+[Philosopher 1] Waiting for forks...
+[Philosopher 0] Released fork 1
+[Philosopher 0] Released fork 0
+[Philosopher 0] Thinking... Cycle 2
+[Philosopher 1] Picked up fork 1
+[Philosopher 4] Picked up fork 0
+[Philosopher 4] Picked up fork 4
+[Philosopher 4] Eating...
+[Philosopher 3] Waiting for forks...
+[Philosopher 2] Released fork 3
+[Philosopher 3] Picked up fork 3
+[Philosopher 2] Released fork 2
+[Philosopher 2] Thinking... Cycle 2
+[Philosopher 1] Picked up fork 2
+[Philosopher 1] Eating...
+[Philosopher 1] Released fork 2
+[Philosopher 1] Released fork 1
+[Philosopher 1] Thinking... Cycle 3
+[Philosopher 0] Waiting for forks...
+[Philosopher 4] Released fork 4
+[Philosopher 4] Released fork 0
+[Philosopher 4] Thinking... Cycle 2
+[Philosopher 3] Picked up fork 4
+[Philosopher 3] Eating...
+[Philosopher 0] Picked up fork 0
+[Philosopher 0] Picked up fork 1
+[Philosopher 0] Eating...
+[Philosopher 2] Waiting for forks...
+[Philosopher 2] Picked up fork 2
+[Philosopher 4] Waiting for forks...
+[Philosopher 0] Released fork 1
+[Philosopher 0] Released fork 0
+[Philosopher 0] Thinking... Cycle 3
+[Philosopher 4] Picked up fork 0
+[Philosopher 3] Released fork 4
+[Philosopher [Philosopher 3] Released fork 3
+[Philosopher 2] Picked up fork 3
+4] Picked up fork 4
+[Philosopher 3] Thinking... Cycle 3
+[Philosopher 4] Eating...
+[Philosopher 2] Eating...
+[Philosopher 1] Waiting for forks...
+[Philosopher 1] Picked up fork 1
+[Philosopher 0] Waiting for forks...
+[Philosopher 2] Released fork 3
+[Philosopher 2] Released fork 2
+[Philosopher 2] Thinking... Cycle 3
+[Philosopher 1] Picked up fork 2
+[Philosopher 1] Eating...
+[Philosopher 4] Released fork 4
+[Philosopher 4] Released fork 0
+[Philosopher 4] Thinking... Cycle 3
+[Philosopher 0] Picked up fork 0
+[Philosopher 3] Waiting for forks...
+[Philosopher 3] Picked up fork 3
+[Philosopher 3] Picked up fork 4
+[Philosopher 3] Eating...
+[Philosopher 2] Waiting for forks...
+[Philosopher 4] Waiting for forks...
+[Philosopher 1] Released fork 2
+[Philosopher 2] Picked up fork 2
+[Philosopher 1] Released fork 1
+[Philosopher 1] Finished all cycles.
+[Philosopher 0] Picked up fork 1
+[Philosopher 0] Eating...
+[Philosopher 3] Released fork 4
+[Philosopher 3] Released fork 3
+[Philosopher 3] Finished all cycles.
+[Philosopher 2] Picked up fork 3
+[Philosopher 2] Eating...
+[Philosopher 0] Released fork 1
+[Philosopher 0] Released fork 0
+[Philosopher 0] Finished all cycles.
+[Philosopher 4] Picked up fork 0
+[Philosopher 4] Picked up fork 4
+[Philosopher 4] Eating...
+[Philosopher 2] Released fork 3
+[Philosopher 2] Released fork 2
+[Philosopher 2] Finished all cycles.
+[Philosopher 4] Released fork 4
+[Philosopher 4] Released fork 0
+[Philosopher 4] Finished all cycles.
+Dining Philosophers simulation completed.
+[?2004h]0;mina@HP: ~/project2[01;32mmina@HP[00m:[01;34m~/project2[00m$ [7mexit[27mexit
+[?2004lexit
+
+Script done on 2026-04-27 12:52:04-04:00 [COMMAND_EXIT_CODE="0"]
